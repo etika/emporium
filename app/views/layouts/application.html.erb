@@ -32,9 +32,9 @@
 <%= yield %>
 <% if @cart%>
 <div id="shopping_cart">
-<%= render :partial=>"cart/cart"%>
+<%#= render :partial=>"cart/cart"%>
 </div>
-<%= drop_receiving_element("shopping_cart",:url=>{:controller=>"cart",:action=>"add"})%>
+<%#= drop_receiving_element("shopping_cart",:url=>{:controller=>"cart",:action=>"add"})%>
 <%end%>
 </div>
 <div id="footer">
