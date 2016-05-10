@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'catalog/index'
 
   get 'catalog/show'
@@ -13,37 +14,16 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :publishers
   end
+  
   namespace :admin do
-  get 'author/new'
+  resources :author
   end
 
-  namespace :admin do
-  get 'author/create'
-  post 'author/create'
-  end
-
-  namespace :admin do
-  get 'author/edit'
-  end
-
-  namespace :admin do
-  post 'author/update'
-  end
-
-  namespace :admin do
-  post 'author/destroy'
-  end
-
-  namespace :admin do
-  get 'author/show'
-  end
-
-  namespace :admin do
-  get 'author/index'
-  end
+ 
 
   get 'about/index'
   get 'cart/add'
+  mount Thredded::Engine => '/forum'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

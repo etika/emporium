@@ -12,8 +12,12 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
+gem 'devise'
+gem 'thredded', '~> 0.3.2'
 
-gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.3.1'
+# gem 'sass-rails', github: 'rails/sass-rails'
+gem 'autoprefixer-rails'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby

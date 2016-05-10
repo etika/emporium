@@ -26,9 +26,7 @@ class Admin::BooksController < ApplicationController
   # POST /admin/books
   # POST /admin/books.json
   def create
-    byebug
     @book = Book.new(book_params)
-
     respond_to do |format|
       if @book.save
         format.html { redirect_to [:admin, @book], notice: 'Book was successfully created.' }

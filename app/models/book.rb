@@ -11,12 +11,14 @@ class Book < ActiveRecord::Base
   validates_uniqueness_of :isbn
   has_many :cart_items
   has_many :carts,:through =>:cart_items
+
   def author_names
     self.authors.map do |a|
       a.name
     end.join(", ") rescue ""
   end
-    def self.latest
+
+  def self.latest
      find :all,:limit=>10,:order=>"books.id.desc",:include=>[:authors,:publisher]
-    end
+  end
 end
