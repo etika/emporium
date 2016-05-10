@@ -1,0 +1,11 @@
+<%if @author.errors.any?%>
+<ul>
+  <%@author.errors.full_messages.each do |msg| %>
+<li> <%=msg%></li>
+  <%end%>
+  </ul>
+<%end%>
+<p><%=label_tag :first_name%></br>
+<%= text_field_tag 'author[first_name]',@author.first_name%></p>
+<p><%=label_tag :last_name%></br>
+<%= text_field_tag 'author[last_name]',@author.last_name%></p>

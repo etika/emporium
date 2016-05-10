@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%=@page_title || 'Emporium'%></title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= stylesheet_link_tag "style"%>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div id="header">
+<h1 id="logo">Emporium&trade;</h1>
+<h2 id="slogan">Books on Rails</h2>
+</div>
+<div id="menu">
+<ul>
+<li><a href="/admin/author">Authors</a>&nbsp;&nbsp;|&nbsp;</li>
+<li><a href="/admin/publisher">Publisher</a>&nbsp;&nbsp;|&nbsp;</li>
+<li><a href="/admin/book">Books</a>&nbsp;&nbsp;|&nbsp;</li>
+<li><a href="/">Catalog</a>&nbsp;&nbsp;|&nbsp;</li>
+<li><a href="/about">About</a></li>
+</ul>
+</div>
+<div id="content">
+<%= raw"<h1>#{@page_title}</h1>" if @page_title%>
+<%if flash[:notice]%>
+<div id="notice">
+  <%= flash[:notice]%>
+</div>
+<%end%>
+<%= yield %>
+<% if @cart%>
+<div id="shopping_cart">
+<%= render :partial=>"cart/cart"%>
+</div>
+<%= drop_receiving_element("shopping_cart",:url=>{:controller=>"cart",:action=>"add"})%>
+<%end%>
+</div>
+<div id="footer">
+&copy; 1995-2006 Emporium
+</div>
+</body>
+</html>

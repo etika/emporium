@@ -1,0 +1,50 @@
+<%= form_for([:admin, @book]) do |f| %>
+  <% if @book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% @book.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+      <%= f.label :title %><br>
+    <%= f.text_field :title %>
+    </div>
+  <div class="field">
+      <%= f.label :published_at %><br>
+    <%= f.datetime_select :published_at %>
+    </div>
+  <div class="field">
+      <%= f.label :isbn %><br>
+    <%= f.text_field :isbn %>
+    </div>
+  <div class="field">
+      <%= f.label :publisher%><br>
+    <%= f.collection_select :publisher_id,@publishers,:id,:name,:prompt=>"Select publisher" %>
+    </div>
+  <div class="field">
+      <%= f.label :blurb %><br>
+    <%= f.text_area :blurb %>
+    </div>
+  <div class="field">
+      <%= f.label :page_count %><br>
+    <%= f.number_field :page_count %>
+    </div>
+  <div class="field">
+      <%= f.label :price %><br>
+    <%= f.text_field :price %>
+    </div>
+    <div class="field">
+    <%= f.label :authors%>
+    <%= f.collection_select :author_ids,@authors,:id,:name, {prompt: "Select Author"}, multiple: true %>
+
+    </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
