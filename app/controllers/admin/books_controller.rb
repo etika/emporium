@@ -21,11 +21,13 @@ class Admin::BooksController < ApplicationController
 
   # GET /admin/books/1/edit
   def edit
+    load_data
   end
 
   # POST /admin/books
   # POST /admin/books.json
   def create
+    byebug
     @book = Book.new(book_params)
     respond_to do |format|
       if @book.save
@@ -71,7 +73,7 @@ class Admin::BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :published_at, :isbn, :publisher_id, :blurb, :page_count, :price,:author_ids=>[])
+      params.require(:book).permit(:title, :published_at, :isbn, :publisher_id, :blurb, :avatar,:page_count, :price,:author_ids=>[])
     end
     def load_data
     @authors=Author.all

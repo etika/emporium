@@ -39,6 +39,10 @@
       <%= f.label :price %><br>
     <%= f.text_field :price %>
     </div>
+      <div class="field">
+        <%= f.label :avatar %><br>
+        <%= f.file_field :avatar %>
+        </div>
     <div class="field">
     <%= f.label :authors%>
     <%= f.collection_select :author_ids,@authors,:id,:name, {prompt: "Select Author"}, multiple: true %>

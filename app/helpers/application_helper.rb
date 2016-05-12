@@ -1,8 +1,7 @@
 module ApplicationHelper
   def add_book_link(text,book)
-    # link_to text,{:url=>{:controller=>"cart",:action=>"add",:id=>book}},{:title=>"Add to Cart",:href=>url_for(:controller=>"cart",:action=>"add",:id=>book)},:remote=>true
-  end
-
+    link_to text,cart_add_path(book)
+end
   def remove_book_link(text,book)
     link_to text,{:url=>{:controller=>"cart",:action=>"remove",:id=>book}},{:title=>"Remove Cart",:href=>url_for(:controller=>"cart",:action=>"remove",:id=>book)},:remote=>true
   end

@@ -1,4 +1,6 @@
 class Book < ActiveRecord::Base
+   include Elasticsearch::Model
+   include Elasticsearch::Model::Callbacks
   has_and_belongs_to_many :authors,association_foreign_key: 'author_id',join_table:'authors_books'
   belongs_to :publisher
   validates_length_of :title,:in=>1..255
@@ -11,7 +13,7 @@ class Book < ActiveRecord::Base
   validates_uniqueness_of :isbn
   has_many :cart_items
   has_many :carts,:through =>:cart_items
-
+  mount_uploader :avatar, AvatarUploader
   def author_names
     self.authors.map do |a|
       a.name

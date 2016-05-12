@@ -10,6 +10,13 @@ class CatalogController < ApplicationController
   end
 
   def search
+    @page_title= "Search"
+    if params[:commit] == "Search" || params[:q]
+      @books=Book.find_by_content(params[:q].to_s.upcase)
+      unless @books.size >0
+        flash.now[:notice] = "No book found matching your criteria"
+      end
+    end
   end
 
   def latest

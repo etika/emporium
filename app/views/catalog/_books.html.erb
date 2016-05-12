@@ -1,5 +1,6 @@
-<dl id="books">
+<dl id="books" draggable="true">
 <% for book in @books %>
+<div class="draggable">
 <dt><%= link_to book.title ,:action=>"show",:id=>book.id%></dt>
 <% for author in book.authors%>
 <dd><%=author.last_name%><%=author.first_name%></dd>
@@ -7,5 +8,15 @@
 <dd><strong><%=add_book_link("+",book) %> </strong>
 <dd><%=pluralize(book.page_count,"page")%></dd>
 <dd><small>Publisher:<%=book.publisher.name%></small></dd>
+<dd>
+<%= image_tag book.avatar_url(:thumb).to_s %>
+</dd>
+
+</div>
 <%end%>
 </dl>
+<script type="text/javascript">
+   $(function() {
+$( ".draggable" ).draggable();
+});
+</script>

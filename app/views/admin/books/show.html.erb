@@ -34,6 +34,10 @@
   <strong>Price:</strong>
   <%= @book.price %>
 </p>
+<p>
+<strong>Avatar</strong>
+<%= image_tag @book.avatar_url(:thumb).to_s %>
 
+</p>
 <%= link_to 'Edit', edit_admin_book_path(@book) %> |
 <%= link_to 'Back', admin_books_path %>
