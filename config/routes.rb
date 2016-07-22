@@ -22,7 +22,14 @@ Rails.application.routes.draw do
  
 
   get 'about/index'
-  get 'cart/add'
+  match '/cart/add/:id' => 'cart#add', :via => [:get, :post], :as => :cart_add
+  match '/cart/remove/:id' => 'cart#remove', :via => [:get, :post], :as => :cart_remove
+  get "/cart/clear"
+  # get 'cart/:id/add'=>'cart#add',:as => :cart_add
+  # match ':cart/:add/:id', via: [:get, :post]
+
+  # post 'cart/:id/add'=>'cart#add',:as => :cart_add
+
   mount Thredded::Engine => '/forum'
 
   # The priority is based upon order of creation: first created -> highest priority.

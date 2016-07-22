@@ -5,7 +5,7 @@ class Cart < ActiveRecord::Base
    cart_items.inject(0){|sum,n| n.price*n.amount + sum} 
   end
   def add(book_id)
-   items=cart_items.find_all_by_book_id(book_id)
+   items=cart_items.where("book_id=?",book_id)
    book=Book.find(book_id)
    if items.size <1
     ci=cart_items.create(:book_id=>book_id,:amount=>1,:price=>book.price)
@@ -18,7 +18,7 @@ class Cart < ActiveRecord::Base
   end
 
   def remove(book_id)
-   ci = cart_items.find_all_by_book_id(book_id)
+   ci = cart_items.where("book_id=?",book_id).first
    if ci.amount > 1
      ci.update_attribute(:amount,ci.amount - 1)
    else

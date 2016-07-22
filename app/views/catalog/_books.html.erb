@@ -6,6 +6,8 @@
 <dd><%=author.last_name%><%=author.first_name%></dd>
 <%end%>
 <dd><strong><%=add_book_link("+",book) %> </strong>
+<dd><strong><%=remove_book_link("-",book) %> </strong>
+
 <dd><%=pluralize(book.page_count,"page")%></dd>
 <dd><small>Publisher:<%=book.publisher.name%></small></dd>
 <dd>

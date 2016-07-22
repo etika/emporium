@@ -1,11 +1,12 @@
 class CartController < ApplicationController
   def add
+    byebug
     params[:id].gsub!(/book_/,"")
     @book=Book.find(params[:id])
     if request.xhr?
       @item=@cart.add(params[:id])
       flash.now[:cart_notice]="Added <em>#{@item.book.title}</em>"
-      render :action=>"add_with_ajax"
+      # render :action=>"add_/with_ajax"
     elsif request.post?
       @item=@cart.add(params[:id])
       flash[:cart_notice]="Added <em>#{@item.book.title}</em>"
@@ -18,9 +19,9 @@ class CartController < ApplicationController
     # params[:id].gsub!(/book_/,"")
     @book=Book.find(params[:id])
     if request.xhr?
-      @item=@cart.add(params[:id])
+      @item=@cart.remove(params[:id])
       flash.now[:cart_notice]="Added <em>#{@item.book.title}</em>"
-      render :action=>"remove_with_ajax"
+      # render :action=>"remove_with_ajax"
     elsif request.post?
       @item=@cart.remove(params[:id])
       flash[:cart_notice]="Removed <em>#{@item.book.title}</em>"
@@ -33,7 +34,7 @@ class CartController < ApplicationController
    if request.xhr?
     @cart.cart_items.destroy_all
     flash.now[:cart_notice]="Cleared the cart"
-    render :action=>"clear_with_ajax"
+    # render :action=>"clear_with_ajax"
    elsif request.post?
     @cart.cart_items.destroy_all
     flash[:cart_notice]="Cleared the cart"
