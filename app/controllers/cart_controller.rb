@@ -1,6 +1,5 @@
 class CartController < ApplicationController
   def add
-    byebug
     params[:id].gsub!(/book_/,"")
     @book=Book.find(params[:id])
     if request.xhr?

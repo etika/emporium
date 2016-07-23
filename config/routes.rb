@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'checkout/index'
+
+  post 'checkout/place_order'=>'checkout#place_order',:as=>:place_order
+
+  get 'checkout/thank_you'
+
   devise_for :users
   get 'catalog/index'
 

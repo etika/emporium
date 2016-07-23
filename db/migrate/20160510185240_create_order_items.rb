@@ -1,14 +1,14 @@
 class CreateOrderItems < ActiveRecord::Migration
   def self.up
     create_table :order_items do |t|
-      t.column :book_id,:integer
-      t.column :book_id,:integer
-      t.column :order_id,:integer
-      t.column :price,:integer
-      t.column :amount,:integer
+      t.integer :book_id
+      t.integer :book_id
+      t.integer :order_id
+      t.integer :price
+      t.integer :amount
 
-      t.column :created_at,:timestamp
-      t.column :updated_at,:timestamp
+      t.datetime :created_at
+      t.datetime :updated_at
     end
   end
 

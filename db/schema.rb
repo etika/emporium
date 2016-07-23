@@ -75,8 +75,19 @@ ActiveRecord::Schema.define(version: 20160512095630) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "ship_to_first_name"
+    t.string   "ship_to_last_name"
+    t.string   "ship_to_address"
+    t.string   "ship_to_city"
+    t.string   "ship_to_postal_code"
+    t.string   "ship_to_country"
+    t.string   "customer_ip"
+    t.string   "status"
+    t.string   "error_message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "publishers", force: :cascade do |t|
